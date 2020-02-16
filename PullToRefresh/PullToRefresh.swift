@@ -93,12 +93,7 @@ open class PullToRefresh: NSObject {
                 }
                 
             case .finished:
-                if isCurrentlyVisible {
-                    animateFinishedState()
-                } else {
-                    scrollView?.contentInset = self.scrollViewDefaultInsets
-                    state = .initial
-                }
+                animateFinishedState()
 
             case .releasing(progress: let value) where value < 0.1:
                 state = .initial
